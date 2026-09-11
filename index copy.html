@@ -10,25 +10,37 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./index.css">
   <title>Calculator app</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 </head>
 
 <body>
   <main class="main-section d-flex justify-content-center align-items-center" data-theme="blue" id="main-section">
     <div class="container">
-
       <div class="row justify-content-center">
 
-        <div class="col-12 col-sm-9 col-md-6 col-lg-4">
-          <div class="d-flex justify-content-between align-items-end mb-4">
-            <!-- Tittle to the left -->
-            <h1 class="m-0 fs-3">calc</h1>
+      <div class="calculator-wrapper d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+        <div class="trig-panel p-3 text-center d-none" id="trigPanel">
+          <h6 class="mb-3" style="color: var(--text-main);">Trig Functions</h6>
+          <div class="row g-2">
+            <div class="col-6"><button class="btn key-trig" data-trig="sin" type="button">sin</button></div>
+            <div class="col-6"><button class="btn key-trig" data-trig="cos" type="button">cos</button></div>
+            <div class="col-6"><button class="btn key-trig" data-trig="tan" type="button">tan</button></div>
+            <div class="col-6"><button class="btn key-trig" data-trig="sqrt" type="button">√</button></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-10 col-md-8 col-lg-5" style="max-width: 540px;">
+          <div class="d-flex justify-content-between align-items-end mb-4 header-text">
+            <div class="d-flex align-items-center gap-2">
+              <!-- Tittle to the left -->
+              <h1 class="m-0 fs-3">calc</h1>
+              <button class="btn btn-sm btn-outline-secondary py-0 px-2" id="toggleTrig" style="font-size: 0.75rem; border-color: var(--text-main); color: var(--text-main);">TRIG</button>
+            </div>
             <!-- Selector to the right -->
             <div class="d-flex align-items-end gap-3">
-              <span class="theme-label">THEME</span>
+              <span class="theme-label mb-1">THEME</span>
               <div class="theme-switcher">
-                <div class="d-flex justify-content-around px-2 mb-1 theme-numbers">
+                <div class="d-flex justify-content-between px-2 mb-1 theme-numbers">
                   <span>1</span>
                   <span>2</span>
                   <span>3</span>
@@ -38,40 +50,40 @@
               </div>
             </div>
           </div>
-          <div class="calculator-screen text-end mb-3 p-3">
-            <span class="theme-color">399,981</span>
+          <div class="calculator-screen text-end mb-3 p-4">
+            <span id="calc-screen">0</span>
           </div>
 
                     <!-- Keypad -->
-          <div class="row calculator-keypad-container text-center g-3 mt-4">
+          <div class="row calculator-keypad-container text-center g-3 mt-1">
 
               <!-- Row 1 -->
-              <div class="col-3"><button class="btn key-number" type="button">7</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">8</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">9</button></div>
-              <div class="col-3"><button class="btn key-action" type="button">DEL</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="7" type="button">7</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="8" type="button">8</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="9" type="button">9</button></div>
+              <div class="col-3"><button class="btn key-action" id="btn-del" type="button">DEL</button></div>
 
               <!-- Row 2 -->
-              <div class="col-3"><button class="btn key-number" type="button">4</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">5</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">6</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">+</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="4" type="button">4</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="5" type="button">5</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="6" type="button">6</button></div>
+              <div class="col-3"><button class="btn key-number" data-op="+" type="button">+</button></div>
 
               <!-- Row 3 -->
-              <div class="col-3"><button class="btn key-number" type="button">1</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">2</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">3</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">-</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="1" type="button">1</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="2" type="button">2</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="3" type="button">3</button></div>
+              <div class="col-3"><button class="btn key-number" data-op="-" type="button">-</button></div>
 
               <!-- Row 4 -->
-              <div class="col-3"><button class="btn key-number" type="button">.</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">0</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">/</button></div>
-              <div class="col-3"><button class="btn key-number" type="button">×</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="." type="button">.</button></div>
+              <div class="col-3"><button class="btn key-number" data-num="0" type="button">0</button></div>
+              <div class="col-3"><button class="btn key-number" data-op="/" type="button">/</button></div>
+              <div class="col-3"><button class="btn key-number" data-op="x" type="button">×</button></div>
 
               <!-- Row 5: RESET y = (estos abarcan dos columnas cada uno) -->
-              <div class="col-6"><button class="btn key-action w-100" type="button">RESET</button></div>
-              <div class="col-6"><button class="btn key-equal w-100" type="button">=</button></div>
+              <div class="col-6"><button class="btn key-action w-100" id="btn-reset" type="button">RESET</button></div>
+              <div class="col-6"><button class="btn key-equal w-100" id="btn-equal" type="button">=</button></div>
 
           </div>
         </div>
@@ -80,78 +92,6 @@
 
     </div>
 
-
-<!--
-      <div>
-        <p></p>
-      </div>
-    </div>
-    <div>
-      <div>
-        <div>
-          <p>7</p>
-        </div>
-        <div>
-          <p>8</p>
-        </div>
-        <div>
-          <p>9</p>
-        </div>
-        <div>
-          <p>DEL</p>
-        </div>
-      </div>
-      <div>
-        <div>
-          <p>4</p>
-        </div>
-        <div>
-          <p>5</p>
-        </div>
-        <div>
-          <p>6</p>
-        </div>
-        <div id="+">
-          <p>+</p>
-        </div>
-      </div>
-      <div>
-        <div>
-          <p>1</p>
-        </div>
-        <div>
-          <p>2</p>
-        </div>
-        <div>
-          <p>3</p>
-        </div>
-        <div id="-">
-          <p>-</p>
-        </div>
-      </div>
-      <div>
-        <div>
-          <p>.</p>
-        </div>
-        <div>
-          <p>0</p>
-        </div>
-        <div id="/">
-          <p>/</p>
-        </div>
-        <div id="x">
-          <p>x</p>
-        </div>
-      </div>
-      <div>
-        <div>
-          <p>RESET</p>
-        </div>
-        <div>
-          <p>=</p>
-        </div>
-      </div>
-    </div>-->
   </main>
 
 </body>

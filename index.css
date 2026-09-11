@@ -1,11 +1,13 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: hsl(222, 26%, 31%);
 }
 
 * {
   font-family: 'League Spartan', sans-serif;
   font-weight: 700;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Themes */
@@ -26,7 +28,7 @@ body {
   --screen-bg: hsl(224, 36%, 15%);
 
   /* Text & Details */
-  color: hsl(0, 0%, 100%);
+  --text-main: hsl(0, 0%, 100%);
   --toggle-circle: hsl(6, 63%, 50%);
   
   /* Keys */
@@ -37,6 +39,7 @@ body {
   /*(DEL / RESET) */
   --key-btn-bg: hsl(225, 21%, 49%);
   --key-btn-shadow: hsl(224, 28%, 35%);
+  --key-btn-text: hsl(0, 0%, 100%);
 
   /* Bottom (=) */
   --key-equal-bg: hsl(6, 63%, 50%);
@@ -52,7 +55,7 @@ body {
   --screen-bg: hsl(0, 0%, 93%);
 
   /* Text & Details */
-  color: hsl(60, 10%, 19%);
+  --text-main: hsl(60, 10%, 19%);
   --toggle-circle: hsl(25, 98%, 40%);
 
   /* Keys */
@@ -65,6 +68,7 @@ body {
   --key-btn-shadow: hsl(185, 58%, 25%);
 
   /* Bottom (=) */
+  --key-btn-text: hsl(0, 0%, 100%);
   --key-equal-bg: hsl(25, 98%, 40%);
   --key-equal-shadow: hsl(25, 99%, 27%);
   --key-equal-text: hsl(0, 0%, 100%);
@@ -78,8 +82,11 @@ body {
   --screen-bg: hsl(268, 71%, 12%);        /* Screen bg */
 
   /*(DEL y RESET) */
+  --text-main: hsl(52, 100%, 62%);
   --key-btn-bg: hsl(281, 89%, 26%);       /* Keybg (DEL/RESET) */
   --key-btn-shadow: hsl(285, 91%, 52%);   /* Key shadow */
+
+  --key-btn-text: hsl(0, 0%, 100%);       /* button*/
 
   /* Keys */
   --key-equal-bg: hsl(176, 100%, 44%);    /* Key bg (=) */
@@ -96,6 +103,10 @@ body {
   --key-btn-text: hsl(0, 0%, 100%);        /* White (Text DEL/RESET) */
 }
 
+/* Uses text color defined by currentv theme */
+.header-text, .theme-label, .theme-numbers {
+  color: var(--text-main);
+}
 
 /* Label Themes */
 .theme-label {
@@ -114,6 +125,7 @@ body {
     border-radius: 20px;
     padding: 0 5px;
     margin: 0;
+    appearance: none; /* I researched and this is fot he custom circle to work on IOS */
 }
 
 /* Style of the circle (WebKit / Chrome / Brave / Safari) */
@@ -124,15 +136,18 @@ body {
     border-radius: 50%;
     background-color: var(--toggle-circle);
     border: none;
+    cursor: pointer; /* I like how this looks */
 }
 
 .calculator-screen {
   width: 100%;
   background-color: var(--screen-bg);
   border-radius: 10px;
-  color: var(--toggle-color);
+  color: var(--text-main);
   font-size: 2.5rem;
   font-weight: bold;
+  word-wrap: break-word;    /* This breaks large numbers so it does not brek the container*/
+  word-break: break-all;
 }
 
 .calculator-bottom {
@@ -178,4 +193,28 @@ body {
     background-color: var(--key-equal-bg);
     color: var(--key-equal-text);
     box-shadow: 0 4px var(--key-equal-shadow);
+}
+
+.trig-panel {
+  width: 180px;
+  background-color: var(--keypad-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.key-trig {
+  width: 100%;
+  height: 45px;
+  border-radius: 6px;
+  font-size: 1rem;
+  border: none;
+  background-color: var(--key-btn-bg);
+  color: var(--key-btn-text);
+  box-shadow: 0 3px var(--key-btn-shadow);
+}
+
+.key-trig:hover {
+  background-color: var(--key-equal-bg);
+  color: var(--key-equal-text);
 }
