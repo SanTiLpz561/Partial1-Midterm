@@ -1,0 +1,181 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+}
+
+/* Themes */
+.main-section {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-section[data-theme="blue"] {
+  /* Backgrounds */
+  background-color: hsl(222, 26%, 31%);
+  --toggle-bg: hsl(223, 31%, 20%);
+  --keypad-bg: hsl(223, 31%, 20%);
+  --screen-bg: hsl(224, 36%, 15%);
+
+  /* Text & Details */
+  color: hsl(0, 0%, 100%);
+  --toggle-circle: hsl(6, 63%, 50%);
+  
+  /* Keys */
+  --key-num-bg: hsl(30, 25%, 89%);
+  --key-num-shadow: hsl(28, 16%, 65%);
+  --key-num-text: hsl(221, 14%, 31%);
+
+  /*(DEL / RESET) */
+  --key-btn-bg: hsl(225, 21%, 49%);
+  --key-btn-shadow: hsl(224, 28%, 35%);
+
+  /* Bottom (=) */
+  --key-equal-bg: hsl(6, 63%, 50%);
+  --key-equal-shadow: hsl(6, 70%, 34%);
+  --key-equal-text: hsl(0, 0%, 100%);
+}
+
+.main-section[data-theme="white"] {
+  /* Backgrounds */
+  background-color: hsl(0, 0%, 90%);
+  --toggle-bg: hsl(0, 5%, 81%);
+  --keypad-bg: hsl(0, 5%, 81%);
+  --screen-bg: hsl(0, 0%, 93%);
+
+  /* Text & Details */
+  color: hsl(60, 10%, 19%);
+  --toggle-circle: hsl(25, 98%, 40%);
+
+  /* Keys */
+  --key-num-bg: hsl(45, 7%, 89%);
+  --key-num-shadow: hsl(35, 11%, 61%);
+  --key-num-text: hsl(60, 10%, 19%);
+
+  /*(DEL / RESET) */
+  --key-btn-bg: hsl(185, 42%, 37%);
+  --key-btn-shadow: hsl(185, 58%, 25%);
+
+  /* Bottom (=) */
+  --key-equal-bg: hsl(25, 98%, 40%);
+  --key-equal-shadow: hsl(25, 99%, 27%);
+  --key-equal-text: hsl(0, 0%, 100%);
+}
+
+.main-section[data-theme="purple"] {
+  /* Backgrounds */
+  background-color: hsl(268, 75%, 9%);     /* Main bg */
+  --toggle-bg: hsl(268, 71%, 12%);        /* Toggle bg */
+  --keypad-bg: hsl(268, 71%, 12%);        /* Keypad bg */
+  --screen-bg: hsl(268, 71%, 12%);        /* Screen bg */
+
+  /*(DEL y RESET) */
+  --key-btn-bg: hsl(281, 89%, 26%);       /* Keybg (DEL/RESET) */
+  --key-btn-shadow: hsl(285, 91%, 52%);   /* Key shadow */
+
+  /* Keys */
+  --key-equal-bg: hsl(176, 100%, 44%);    /* Key bg (=) */
+  --toggle-circle: hsl(176, 100%, 44%);   /* Toggle */
+  --key-equal-shadow: hsl(177, 92%, 70%); /* Key shadow (=) */
+
+  /*Numbers*/
+  --key-num-bg: hsl(268, 47%, 21%);       /* Key bg */
+  --key-num-shadow: hsl(290, 70%, 36%);   /* Key shadow */
+
+  /* Text Colors */
+  color: hsl(52, 100%, 62%);              /* Light yellow (Texto general) */
+  --key-equal-text: hsl(198, 20%, 13%);   /* Very dark blue (Texto botón =) */
+  --key-btn-text: hsl(0, 0%, 100%);        /* White (Text DEL/RESET) */
+}
+
+
+/* Label Themes */
+.theme-label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.theme-numbers {
+    font-size: 0.8rem;
+}
+
+.theme-slider {
+    width: 70px;
+    height: 26px;
+    background-color: var(--toggle-bg); 
+    border-radius: 20px;
+    padding: 0 5px;
+    margin: 0;
+}
+
+/* Style of the circle (WebKit / Chrome / Brave / Safari) */
+.theme-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--toggle-circle);
+    border: none;
+}
+
+.calculator-screen {
+  width: 100%;
+  background-color: var(--screen-bg);
+  border-radius: 10px;
+  color: var(--toggle-color);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.calculator-bottom {
+  background-color: var(--keypad-bg);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.calculator-keypad-container {
+    background-color: var(--keypad-bg);
+    border-radius: 10px;
+    padding: 25px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* ---Bottom base--- */
+.key-number, .key-action, .key-equal {
+    width: 100%;
+    height: 60px;
+    border-radius: 8px;
+    font-size: 2rem;
+    transform: none;
+}
+
+
+.key-number, .key-number:hover {
+    background-color: var(--key-num-bg);
+    color: var(--key-num-text);
+    box-shadow: 0 4px var(--key-num-shadow);
+}
+
+
+.key-action, .key-action:hover {
+    background-color: var(--key-btn-bg);
+    color: var(--key-btn-text);
+    font-size: 1.2rem;
+    box-shadow: 0 4px var(--key-btn-shadow);
+}
+
+
+.key-equal, .key-equal:hover{
+    background-color: var(--key-equal-bg);
+    color: var(--key-equal-text);
+    box-shadow: 0 4px var(--key-equal-shadow);
+}
